@@ -45,7 +45,8 @@ do
 
    # uses osmconvert to clip based on .poly border
    # --complete-ways flag keeps polygons that cross the border
-   ~/osmconvert $2 -B=$polyFILE.poly --complete-ways -o=output/$outputID.osm
+   # --modify-way-tags="building=* add sprayarea=$outputID" add sprayarea tag to each building in the output osm file
+   ~/osmconvert $2 -B=$polyFILE.poly --complete-ways --modify-way-tags="building=* add sprayarea=$outputID" -o=output/$outputID.osm
 
    # clean up
    rm $polyFILE.poly
